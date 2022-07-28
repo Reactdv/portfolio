@@ -11,7 +11,7 @@ const app = express()
 app.use(cors({
   origin:"*"
 }))
-const PORT = 5001
+const PORT = 5002
 const CONNECTION_URL = "mongodb+srv://jerlly:123@cluster0.dwv7gyi.mongodb.net/?retryWrites=true&w=majority"
 
 

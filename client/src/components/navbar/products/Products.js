@@ -44,14 +44,7 @@ const Products =()=>{
   const [isClick,setIsClick] = React.useState(false)
  
  
- const isAuth = useSelector(state=>state.auth)
 
-if(typeof Storage !== "undefined"){
-  localStorage.setItem("isAuth",JSON.stringify(isAuth))
-}
-
- 
-console.log(isAuth) 
 
  const navigate = useNavigate()
  

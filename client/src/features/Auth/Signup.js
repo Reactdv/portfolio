@@ -26,7 +26,7 @@ const Signup =()=>{
   User.email == user.email)
   const [isShowPass,setShowPass] = React.useState(false)
   
-  
+ 
   
  const handleSubmit =(e)=>{
    e.preventDefault();
@@ -54,14 +54,14 @@ const Signup =()=>{
    
    else{
      dispatch(createUser(user))
+     navigate("/login")
      toast.success("register successful",{
        position:"top-center"
      })
-     navigate("/login")
+     
    }
  }
   
- console.log(user) 
   return (
     
        <div 

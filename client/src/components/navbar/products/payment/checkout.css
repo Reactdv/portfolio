@@ -1,0 +1,17 @@
+
+.checkout__container{
+  width:100vw;
+  min-height: 100vh;
+  display:flex;
+  justify-content: center;
+  align-content: center;
+  gap:1rem;
+  padding:1rem;
+  background:white;
+}
+
+.checkout__card {
+  width:300px;
+  min-height:450px;
+  background: red;
+}

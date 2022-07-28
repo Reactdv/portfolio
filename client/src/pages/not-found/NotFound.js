@@ -1,11 +1,13 @@
+import React from "react"
 
 
-
+ 
+import "./notfound.css"
 
 export const NotFound =()=>{
   return (
-  <div>
-    Not found 
+  <div className="notfound__container">
+  
   </div>
   )
 }

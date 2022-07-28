@@ -3,7 +3,8 @@ import { useSelector,useDispatch } from "react-redux"
 import { Link,useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
-  import { isAuth } from "../../utils"
+  import { isAuth,Circular } from "../../utils"
+
 
 const Login =()=>{
   const [isShowPass,setShowPass] = React.useState(false)
@@ -18,6 +19,7 @@ const Login =()=>{
   })
  
  
+const auth = useSelector(state=>state.auth)
 
   const users = useSelector(state=>state.userReducer)
   
@@ -29,17 +31,22 @@ const Login =()=>{
  
  
  
+ 
+ 
+ 
   const handleLogin =()=>{
   const stringifiedUser = JSON.stringify(users)  
     if(!checkUser){
       toast.error("invalid username or password",{position:"top-center"})
     }else{
-    
+      
+      
       navigate("/")
      if(localStorage.getItem("isAuth")){
        console.log("user is already login")
      }else{
       dispatch(isAuth())
+      localStorage.setItem("isAuth",JSON.stringify(auth))
      }
     }
  
@@ -50,6 +57,11 @@ const Login =()=>{
   return (
     
     <div className="login__container">
+   {
+     users.length <= 0?
+     <Circular />
+     :
+   
       <div className="scale login__container-card">
          <div>
            <input 
@@ -100,6 +112,7 @@ const Login =()=>{
           forgot password ?
         </div>
       </div>
+   }  
       <ToastContainer />
     </div>
     

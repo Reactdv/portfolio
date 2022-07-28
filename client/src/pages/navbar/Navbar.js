@@ -1,172 +1,180 @@
 import React from "react"
-import { Link,useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
+import { Circular } from "../../utils"
+
 
 import "./navbar.css"
 
-
-const navbarLinks = [
+const navLinks = [
   
   {
-     component:"Home",
-     url:"/"
+    link:"/",
+    component:"Home"
   },
   
   {
-     component:"Blog",
-     url:"blog"
+    link:"about",
+    component:"About"
   },
   
   {
-     component:"Products",
-     url:"products"
+    link:"products",
+    component:"Products"
   },
   
   {
-     component:"About",
-     url:"about"
+    link:"store",
+    component:"Store"
   },
   
   {
-     component:"Promotion",
-     url:"promotion"
-  },
-  
-  {
-     component:"Store",
-     url:"store"
-  },
-  
-  {
-     component:"Contact",
-     url:"contact"
-  },
+    link:"cntact",
+    component:"Contact"
+  }
   
   ]
 
-export const Navbar =()=>{
-  const [isAnimate,setIsAnimate] = React.useState(false)
-  const [isOpenDrawer,setIsOpenDrawer] = React.useState(false)
- let w = window.screen.width;
- let h = window.screen.height;
- console.log(w,h)
- const isAuth = useSelector(state=>state.auth)
- 
-  let navigate = useNavigate()
-  return (
-  <div>  
-    <div className="app__navbar">
-     {navbarLinks.map((nav,index)=>{
-       return (
-         <Link
-          className="link"
-          key={index}
-          to={nav.url}
-           >{nav.component}
-         </Link>
-         )
-     })}
- {
-   localStorage.getItem("isAuth")?
-   <div 
-   id={isOpenDrawer && "app__navbar-avatar__drawer"}
-   className="app__navbar-avatar-container"
-   
-   >
-     
-     
-      <img 
-      className="app__navbar-avatar"
-      src={require("../../assets/michelle.jpg")}
-      />
-    
-    <div 
-    onClick={()=>setIsOpenDrawer(t=>!t)}
-    className="app__navbar-avatar-icon-container">
-       <div>
-       </div>
-       <div>
-       </div>
-       <div>
-       </div>
-    </div>
- 
-   </div>
-   :
-    <div className="app__navbar-login_signup0">
-       <Link 
-       style={{
-         color:"white",
-     
-         fontWeight:"bold"
-       }}
-       to="login">Login
-       </Link>
-       <Link 
-       style={{
-         color:"white",
-      
-         fontWeight:"bold"
-       }}
-       to="signup">Signup
-       </Link>
-     </div>
- } 
- 
 
-     <div 
-    
-     className={isAnimate? "app__burger animate": "app__burger"}
-      onClick={()=>setIsAnimate(t=>!t)}>
-     </div>
-    </div>
-      {
-        isAnimate &&
-        <div 
-     
-        className="app__navbar-drawer">
-          {
-            navbarLinks.map((nav,index)=>{
-              return (
-                
-                <Link 
-                key={index}
-                className="link1"
-                to={nav.url}>
-                 {nav.component}
-                </Link>
-                
-                )
-            })
-          }
-  {
-    localStorage.getItem("isAuth")?
-     <h1>avatar</h1>
-    :
-    
-  <div className="app__navbar-login_signup">
-          <div 
-          onClick={()=>{
-            navigate("login")
-            setIsAnimate(t=>!t)
-          }}
-          className="link2"
-         >Login
-          </div>
-          <div 
-          onClick={()=>{
-            navigate("signup")
-            setIsAnimate(t=>!t)
-          }}
-          className="link2"
-          >Signup
-          </div>
-        </div> 
+export const Navbar =()=>{
+  
+  const [isOpen,setIsOpen] = React.useState(false)
+  const isAuth = useSelector(state=>state.auth)
+
+
+const renderAuthPage0 =()=>{
+  if(localStorage.getItem("isAuth")){
+    return (
+      
+      <div className="auth__page-container">
+        <img 
         
-  }    
+        src="../../assets/michelle.jpg"/>
+      </div>
+      )
+  }else{
+    <>
+         <Link 
+        className="links"
+        to="login">
+          Login
+        </Link>
+        <Link 
+          className="links"
+          to="signup">
+          Signup
+        </Link>
+    </>    
+  }
+}
+ 
+ 
+const renderAuthPage =()=>{
+  if(localStorage.getItem("isAuth")){
+    return (
+    <>  
+      <Link 
+      onClick={()=>setIsOpen(t=>!t)}
+      style={{color:"white"}}
+      to="/profile">
+        Profile 
+      </Link>
+      <Link 
+      onClick={()=>{
+        localStorage.removeItem("isAuth")
+        setIsOpen(t=>!t)
+      }}
+      style={{color:"white"}}
+      to="/login">
+        Logout
+      </Link>
+    </>  
+      )
+  }else{
+    return (
+      <div style={{display:"flex",gap:"10px",flexDirection:"column", alignItems:"center",justifyContent:"center"}}>
+         <Link 
+          onClick={()=>setIsOpen(t=>!t)}
+          style={{color:"white"}}
+          to="login">Login
+          </Link>
+          <Link 
+          onClick={()=>setIsOpen(t=>!t)}
+          style={{color:"white"}}
+          to="signup">Signup
+         </Link> 
+      </div>   
+    )     
+  }
+}
+ console.log(renderAuthPage)
+  const renderNavs =
+    navLinks.map((nav,index)=>{
+      return (
+        
+        <li key={index}>
+           <Link 
+           className="nav__links"
+           to={nav.link}>
+             {nav.component}
+           </Link>
+        </li>
+        
+        )
+    })
+ 
+ 
+  const renderNavs2 =
+    navLinks.map((nav,index)=>{
+      return (
+        
+        <div key={index}>
+           <Link 
+           onClick={()=>setIsOpen(t=>!t)}
+           style={{color:"white"}}
+           className="nav__links"
+           to={nav.link}>
+             {nav.component}
+           </Link>
         </div>
         
+        )
+    })
+ 
+
+  
+  const handleAnimate =()=> setIsOpen(t=>!t)
+  
+  return (
+    
+    <nav className="app__navbar">
+      <ul>
+     
+        {renderNavs}
+      </ul>
+      <div 
+        className="login__signup-container">
+      
+         {renderAuthPage0()}
+      </div>
+      <div 
+       onClick={handleAnimate}
+       id={isOpen?"open":null}
+      className="burger__container">
+        <div />
+        <div />
+        <div />
+      </div>
+      {
+        isOpen &&
+      <div 
+        className="drawer__top">
+          {renderNavs2}
+          {renderAuthPage()}
+      </div>
       }
-  </div>   
+    
+    </nav>
+    
     )
 }
