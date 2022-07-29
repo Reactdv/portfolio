@@ -1,0 +1,29 @@
+
+
+.announcement{
+  display:flex;
+  align-items: center;
+  justify-content: flex-start;
+  height:100px;
+  padding:1.5rem;
+  background: var(--bg-color);
+  color:var(--clr-white);
+  overflow:hidden;
+}
+
+.announcement h1 {
+  animation: announcement 10s linear infinite ;
+  transform: translate(-200%);
+}
+
+@keyframes announcement {
+  
+  0%{
+    transform:translate(-100%);
+    display:flex;
+  }
+  100%{
+    display:none;
+    transform: translate(250%);
+  }
+}

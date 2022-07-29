@@ -1,6 +1,6 @@
 import  React from "react"
 import { BrowserRouter,Routes,Route} from "react-router-dom"
-import { NotFound,Navbar } from "./pages"
+import { NotFound,Navbar, Announcement } from "./pages"
 import { Home, Products,Checkout } from "./components"
 import { Login,Signup } from "./features"
 import { useDispatch } from "react-redux"
@@ -21,9 +21,10 @@ function App() {
 
   return (
        <BrowserRouter>
+       <Announcement />
        <Navbar />
-            <Routes>
-            <Route path="/"
+         <Routes>
+       {/*     <Route path="/"
             element={<Home />}/>
             <Route 
             element={<Products />}
@@ -35,7 +36,7 @@ function App() {
             <Route path="login"
              element={<Login />}/>
             <Route path="*" 
-            element={<NotFound />}/> 
+            element={<NotFound />}/> */}
          </Routes>   
        </BrowserRouter>
   );

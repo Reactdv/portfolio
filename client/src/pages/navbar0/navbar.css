@@ -1,0 +1,194 @@
+
+
+.navbar__container{
+  display:flex;
+  flex:1;
+  justify-content: space-between;
+  align-items: center;
+  padding:1rem;
+  overflow: hidden;
+}
+
+.left,
+.center,
+.right{
+  flex:1;
+  
+  margin:1rem 0;
+}
+
+.search__container{
+  position:relative;
+  padding:0.5 1rem;
+  animation: container-animate 2s ease-in forwards;
+}
+.left input{
+  padding:0.5rem 1.7rem ;
+  outline:none;
+  border:1px solid black;
+  
+  
+}
+.fa-magnifying-glass{
+  position: absolute;
+  left:5px;
+  top:50%;
+  transform: translateY(-50%);
+  animation: search-icon 3.5s ease-in-out forwards;
+}
+
+
+.right{
+  display:flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap:1rem;
+  position:relative;
+  animation: right-animate 0.3s ease-in-out forwards;
+  
+}
+
+.right a:nth-child(1){
+  animation: right-a1-animate .5s forwards;
+}
+.right a:nth-child(2){
+  animation: right-a2-animate .5s forwards;
+}
+
+
+
+.cart__container{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin:0 0.5rem;
+  position: relative;
+  left:-7%;
+  top:-1000px;
+  animation: cart-container-animate .8s ease  forwards;
+ animation-delay: 2s;
+}
+.cart__container div{
+  background: red;
+  color:var(--clr-white);
+  border-radius: 50%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width:15px;
+  height:15px;
+  position: absolute;
+  top:-500px;
+  right:-15px;
+  animation:orders-animate .7s ease forwards;
+  animation-delay: 3.5s;
+  
+}
+
+
+
+
+@keyframes container-animate{
+  0%,10%,20%{
+    
+  transform:translateY(-500%);
+  }
+  30%,50%,80%{
+  transform:rotate(45deg) translate(-10%,-100%);
+  
+  }
+  100%{
+  transform:rotate(0);
+    
+  }
+  
+
+}
+
+@keyframes search-icon{
+  0%{
+    left:5px;
+  }
+  
+  50%{
+    left:65%;
+  }
+
+  100%{
+    left:5px;
+  }
+}
+
+
+@keyframes right-animate {
+  0%{
+    transform: translateY(-500%);
+    display:none;
+  }
+  100%{
+    transform:translateY(0);
+    display:flex;
+  }
+}
+
+@keyframes right-a1-animate{
+  0%{
+    transform:rotate(0);
+  }
+  50%{
+    transform:rotate(45deg);
+  }
+  100%{
+    transform:rotate(0);
+  }
+}
+
+@keyframes right-a2-animate{
+  0%{
+    transform:translateY(0);
+  }
+  50%{
+    transform: translateY(0);
+  }
+  75%{
+    transform:translateY(-100%);
+  }
+  100%{
+    transform:translateY(0);
+   
+  }
+}
+
+@keyframes cart-container-animate{
+  0%{
+    left:-10%;
+    transform: rotate(45deg);
+   
+  }
+  35%{
+  
+    top:-15px;
+    transform: rotate(45deg);
+  }
+  50%,70%{
+   top:-30px; 
+   transform:rotate(-45deg);
+  }
+  100%{
+    top:0;
+    left:0;
+    transform:rotate(0);
+  }
+}
+
+@keyframes orders-animate {
+  0%{
+   top:-500px;
+  }
+  50%,100%{
+    top:-15px;
+  }
+  70%,90%{
+    top:-30px;
+  }
+}
