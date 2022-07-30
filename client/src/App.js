@@ -1,7 +1,7 @@
 import  React from "react"
 import { BrowserRouter,Routes,Route} from "react-router-dom"
-import { NotFound,Navbar, Announcement } from "./pages"
-import { Home, Products,Checkout } from "./components"
+import { NotFound,Navbar, Announcement,Home } from "./pages"
+import {Products,Checkout } from "./components"
 import { Login,Signup } from "./features"
 import { useDispatch } from "react-redux"
 import { getUsers,isAuth } from "./utils"
@@ -24,9 +24,9 @@ function App() {
        <Announcement />
        <Navbar />
          <Routes>
-       {/*     <Route path="/"
+            <Route path="/"
             element={<Home />}/>
-            <Route 
+      {/*      <Route 
             element={<Products />}
             path="products" /> 
             <Route path="/products/checkout"
@@ -34,9 +34,9 @@ function App() {
             <Route path="signup"
              element={<Signup />}/>
             <Route path="login"
-             element={<Login />}/>
+             element={<Login />}/> */}
             <Route path="*" 
-            element={<NotFound />}/> */}
+            element={<NotFound />}/> 
          </Routes>   
        </BrowserRouter>
   );
