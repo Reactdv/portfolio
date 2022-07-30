@@ -49,6 +49,7 @@
   object-fit: contain;
   transition:all 700ms ease;
   transform:translate(-30%);
+  margin-top:1rem;
 }
 
 .img__container,
@@ -70,26 +71,6 @@
   color:black;
 }
 
-#render__img1,
-#render__img2,
-#render__img3{
-  transition:all 700ms ease;
-  transform: translate(100%);
-}
-
-#render__img1{
-  transform: translate(-100vw);
-}
-
-#render__img2{
-  transform: translate(100vw);
-  
-}
-
-#render__img3{
-  transform: translate(-100%);
-  
-}
 
 .carousel{
   width:100vw;

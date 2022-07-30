@@ -11,13 +11,16 @@ import ebony from "../../../assets/ebony.png"
 import brooke from "../../../assets/brooke-cagle.png"
 
 
-
+{/*
   
   const RenderImgCarousel1 =()=>{
   return (
     
      <div 
-     id="mount__from__left"
+     id={
+       isLeft? "mount__from__left" :
+        "mount__from__right"
+     }
      className="carousel">
       <div className="img__container">
         <img src={fashionable}/>
@@ -38,10 +41,13 @@ import brooke from "../../../assets/brooke-cagle.png"
   return (
     
      <div 
-     id="mount__from__left"
+     id={
+       isLeft? "mount__from__left" :
+        "mount__from__right"
+     }
      className="carousel">
       <div className="img__container">
-        <img src={brooke}/>
+        <img src={morelos}/>
       </div>
       <div className="info__container">
        <h1>SUMMER SALE</h1>
@@ -54,20 +60,22 @@ import brooke from "../../../assets/brooke-cagle.png"
     
     )
 }
-  
-  const RenderImgCarousel3 =()=>{
-  return (
+   */}
+   
+  const RenderCarousel =(props)=>{
+
+return (
     
      <div 
-     id="mount__from__left"
+    id={props.id} 
      className="carousel">
       <div className="img__container">
-        <img src={ebony}/>
+           <img src={props.img}/>
       </div>
       <div className="info__container">
-       <h1>LOUNGEWARE SALE</h1>
+       <h1>{props.h1}</h1>
        <h3>
-          Don't compromise on styles ! GET 30% OFF on new arrivals
+          {props.txt}
        </h3>
       </div>
      </div>
@@ -80,14 +88,23 @@ import brooke from "../../../assets/brooke-cagle.png"
 
 export const Carousel =()=>{
   const [loopCarousel,setLoopCarousel] = React.useState(0)
+  const [isLeft,setIsLeft] = React.useState(false)
   
  const chevronLeft =()=>{
-   
+  setIsLeft(true) 
+  setTimeout(function() {
+    setIsLeft(false)
+  },0);
  setLoopCarousel(state=>state - 1)
- 
+ if(loopCarousel == 0)setLoopCarousel(2)
+   
  }
 
  const chevronRight =()=>{
+ setIsLeft(false) 
+ setTimeout(function() {
+   setIsLeft(true)
+ },0);
  setLoopCarousel(state=>state +1)
  if(loopCarousel == 2) setLoopCarousel(0)
  }
@@ -95,16 +112,49 @@ export const Carousel =()=>{
 
 const carousel =()=>{
   if(loopCarousel == 0){
-    return    <RenderImgCarousel1 />
+    return (
+    <RenderCarousel
+    id={
+      !isLeft?"mount__from__left":
+      "mount__from__right"
+    }
+    img={fashionable}
+    h1="SUMMER SALE"
+    txt= "Don't compromise on styles ! GET 30% OFF on new arrivals"
+    
+    />
+    )
   }if(loopCarousel == 1){
-    return  <RenderImgCarousel2 />
+    return(
+      <RenderCarousel
+    id={
+      !isLeft?"mount__from__left":
+      "mount__from__right"
+    }
+    img={morelos}
+    h1="AUTUMN SALE"
+    txt= "Don't compromise on styles ! GET 30% OFF on new arrivals"
+    isLeft={isLeft}
+    />
+    )
   }if(loopCarousel == 2){
-    return  <RenderImgCarousel3 />
+    return  (
+    <RenderCarousel
+    id={
+      !isLeft?"mount__from__left":
+      "mount__from__right"
+    }
+    img={wearingSunglasses}
+    h1="LOUNGEWARE SALE"
+    txt= "Don't compromise on styles ! GET 30% OFF on new arrivals"
+    
+    />
+    )
   }
 }  
 
-const click =()=>console.log("click")
- 
+
+console.log(isLeft) 
   return (
     
     <div className="carousel__container">
@@ -115,7 +165,6 @@ const click =()=>console.log("click")
            className="fa-solid fa-circle-chevron-left"/>
        </div>
        <div 
-        id="mount__from__right"
        className="content__wrapper">   
            {carousel()}
        </div>
