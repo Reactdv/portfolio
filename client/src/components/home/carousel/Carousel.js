@@ -11,56 +11,7 @@ import ebony from "../../../assets/ebony.png"
 import brooke from "../../../assets/brooke-cagle.png"
 
 
-{/*
-  
-  const RenderImgCarousel1 =()=>{
-  return (
-    
-     <div 
-     id={
-       isLeft? "mount__from__left" :
-        "mount__from__right"
-     }
-     className="carousel">
-      <div className="img__container">
-        <img src={fashionable}/>
-      </div>
-      <div className="info__container">
-       <h1>AUTUMN SALE</h1>
-       <h3>
-          Don't compromise on styles ! GET 30% OFF on new arrivals
-       </h3>
-      </div>
-     </div>
-  
-    
-    )
-}
-  
-  const RenderImgCarousel2 =()=>{
-  return (
-    
-     <div 
-     id={
-       isLeft? "mount__from__left" :
-        "mount__from__right"
-     }
-     className="carousel">
-      <div className="img__container">
-        <img src={morelos}/>
-      </div>
-      <div className="info__container">
-       <h1>SUMMER SALE</h1>
-       <h3>
-          Don't compromise on styles ! GET 30% OFF on new arrivals
-       </h3>
-      </div>
-     </div>
-  
-    
-    )
-}
-   */}
+
    
   const RenderCarousel =(props)=>{
 
@@ -68,7 +19,7 @@ return (
     
      <div 
     id={props.id} 
-     className="carousel">
+     className="carousel auto__scroll">
       <div className="img__container">
            <img src={props.img}/>
       </div>
@@ -154,7 +105,7 @@ const carousel =()=>{
 }  
 
 
-console.log(isLeft) 
+
   return (
     
     <div className="carousel__container">

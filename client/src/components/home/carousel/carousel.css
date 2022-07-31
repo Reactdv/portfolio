@@ -39,7 +39,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items:center ;
-  
+ 
   
 }
 
@@ -50,6 +50,7 @@
   transition:all 700ms ease;
   transform:translate(-30%);
   margin-top:1rem;
+ 
 }
 
 .img__container,
@@ -115,3 +116,4 @@
     display:block;
   }
 }
+

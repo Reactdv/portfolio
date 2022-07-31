@@ -1,5 +1,5 @@
 import React from "react"
-import { Carousel } from "../../components"
+import { Carousel, Categories } from "../../components"
 import "./home.css"
 
 
@@ -8,6 +8,7 @@ const Home =()=>{
     
     <div className="home__container">
       <Carousel />
+      <Categories />
     </div>
     
     )
